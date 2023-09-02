@@ -20,6 +20,7 @@ import ReadData from "./mysite/ReadData";
 import UpdateData from "./mysite/UpdateData";
 import DeleteData from "./mysite/DeleteData";
 import AdminLogin from "./loginregister/AdminLogin";
+import ErrorPage from "./mysite/ErrorPage";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -51,6 +52,7 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} /> */}
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
         </div>
