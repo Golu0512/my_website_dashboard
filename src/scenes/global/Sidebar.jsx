@@ -155,7 +155,7 @@ const Sidebar = () => {
               selected={selected}
               setSelected={setSelected}
             />
-            {user.role == 'admin' ?
+            {JSON.stringify(user.role) === 'admin' ?
             <Item
               title="Delete Data"
               to="/deletedata"
