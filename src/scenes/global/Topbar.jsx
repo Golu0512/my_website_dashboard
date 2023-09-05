@@ -14,6 +14,11 @@ const Topbar = () => {
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
 
+  const handleLogout = () => {
+    sessionStorage.clear();
+    window.location.reload();
+  }
+
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
       {/* SEARCH BAR */}
@@ -43,7 +48,9 @@ const Topbar = () => {
         <IconButton>
           <SettingsOutlinedIcon />
         </IconButton>
-        <IconButton>
+        <IconButton
+          onClick={handleLogout}
+        >
           <PersonOutlinedIcon />
         </IconButton>
       </Box>

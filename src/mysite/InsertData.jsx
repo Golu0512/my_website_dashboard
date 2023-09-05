@@ -5,9 +5,13 @@ import Header from '../components/Header';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const InsertData = () => {
 
+    const { user } = useSelector(state=> state.user);
+    const navigate = useNavigate();
     const isNonMobile = useMediaQuery("(min-width:600px)");
     const notify = (message) => toast.success(message, {
         theme: "colored"
@@ -68,8 +72,10 @@ const InsertData = () => {
     };
 
     useEffect(() =>{
-        // console.log(formData);
-    },[formData])
+        if(user === null) {
+            navigate('/')
+        }
+    },[])
 
     return (
         <>

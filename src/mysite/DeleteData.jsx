@@ -5,10 +5,14 @@ import Header from '../components/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const DeleteData = () => {
 
     const isNonMobile = useMediaQuery("(min-width:600px)");
+    const { user } = useSelector(state=> state.user);
+    const navigate = useNavigate();
     const notify = (message) => toast.success(message, {
         theme: "colored"
     })
@@ -77,6 +81,12 @@ const DeleteData = () => {
     useEffect(()=>{
         // console.log('aaa',sendId.id);
     },[sendId.id])
+
+    useEffect(()=>{
+        if(user === null) {
+            navigate('/')
+        }
+    },[])
 
     return (
         <>
