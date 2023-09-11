@@ -19,7 +19,7 @@ const ReadData = () => {
         setLoading(true);
         const res = await axios.get('https://my-website-api.onrender.com/old_movies')
         setTableData(res.data.data);
-        setTotalRecords(res.data.length);
+        setTotalRecords(res.data?.data.length);
         setLoading(false);
     }
 
