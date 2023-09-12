@@ -13,6 +13,7 @@ import DeleteData from "./mysite/DeleteData";
 import Login from "./mysite/Login";
 import ErrorPage from "./mysite/ErrorPage";
 import Layout from "./mysite/Layout";
+import PublicLayout from "./mysite/PublicLayout";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -27,15 +28,18 @@ function App() {
           <main className="content">
             <Topbar setIsSidebar={setIsSidebar} />
             <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/" element={<Layout />}>
-              <Route index path="/" element={<Dashboard />} />
-              <Route path="/insertdata" element={<InsertData />} />
-              <Route path="/readdata" element={<ReadData />} />
-              <Route path="/updatedata" element={<UpdateData />} />
-              <Route path="/deletedata" element={<DeleteData />} />
-            </Route>
-            <Route path="*" element={<ErrorPage />} />
+              
+              <Route path="/" element={<PublicLayout />}>
+                <Route path="/login" element={<Login />} />
+              </Route>
+              <Route path="/" element={<Layout />}>
+                <Route index path="/" element={<Dashboard />} />
+                <Route path="/insertdata" element={<InsertData />} />
+                <Route path="/readdata" element={<ReadData />} />
+                <Route path="/updatedata" element={<UpdateData />} />
+                <Route path="/deletedata" element={<DeleteData />} />
+              </Route>
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </main>
         </div>

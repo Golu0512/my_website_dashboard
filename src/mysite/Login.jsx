@@ -39,12 +39,10 @@ const Login = () => {
             await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
             .then((response) =>{
                 notify(response?.data.message)
-                sessionStorage.setItem('user', JSON.stringify(response?.data?.result?.user_name))
+                sessionStorage.setItem('user', JSON.stringify(response?.data?.data))
                 dispatch(login({
-                    user_name: response?.data.result?.user_name,
-                    full_name: response?.data.result?.full_name,
-                    email: response?.data.result?.email,
-                    role: response?.data.result.role
+                    full_name: response?.data.data?.full_name,
+                    role: response?.data.data.role
                 }))
                 navigate('/')
             })
