@@ -17,7 +17,7 @@ import { useDispatch } from 'react-redux';
 import { login } from '../states/reducers/index';
 import { useSelector } from "react-redux";
 
-const AdminLogin = () => {
+const Login = () => {
 
     const navigate = useNavigate();
     const [ loginUser, setLogin ] = useState({
@@ -38,31 +38,26 @@ const AdminLogin = () => {
 
     const userLogin = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
-            .then((response) =>{
-                notify(response?.data.message)
-                sessionStorage.setItem('user', JSON.stringify(response?.data.result))
-                dispatch(login({
-                    user_name: response?.data.result,
-                    full_name: response?.data.result.full_name,
-                    email: response?.data.result.email,
-                    password: response?.data.result.password,
-                    role: response?.data.result.role
-                }))
-            })
-            .catch((error) =>{notify(error?.response?.data.message)})
-        } catch(error) {
-            console.log(error);
-        }
+        localStorage.setItem('user','test');
+        navigate('/');
+        // try {
+        //     await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
+        //     .then((response) =>{
+        //         notify(response?.data.message)
+        //         sessionStorage.setItem('user', JSON.stringify(response?.data.result))
+        //         dispatch(login({
+        //             user_name: response?.data.result,
+        //             full_name: response?.data.result.full_name,
+        //             email: response?.data.result.email,
+        //             password: response?.data.result.password,
+        //             role: response?.data.result.role
+        //         }))
+        //     })
+        //     .catch((error) =>{notify(error?.response?.data.message)})
+        // } catch(error) {
+        //     console.log(error);
+        // }
     };
-
-    useEffect(()=>{
-        // console.log('asif',auth)
-        if(user == null) {
-            navigate('/');
-        }
-    },[user])
 
     return (
         <>
@@ -134,4 +129,4 @@ const AdminLogin = () => {
     )
 }
 
-export default AdminLogin
+export default Login
