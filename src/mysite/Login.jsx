@@ -15,7 +15,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { login } from '../states/reducers/index';
-import { useSelector } from "react-redux";
 
 const Login = () => {
 
@@ -24,12 +23,10 @@ const Login = () => {
         email:'',
         password:''
     });
-    // const [ auth, setAuth ] = useState([]);
     const notify = (message) => toast.success(message, {
         theme: "colored"
     })
     const dispatch = useDispatch();
-    const { user } = useSelector(state=> state.user)
 
     const handleChangeInput = (e) => {
         const { name, value} = e.target;
@@ -38,25 +35,23 @@ const Login = () => {
 
     const userLogin = async (e) => {
         e.preventDefault();
-        localStorage.setItem('user','test');
-        navigate('/');
-        // try {
-        //     await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
-        //     .then((response) =>{
-        //         notify(response?.data.message)
-        //         sessionStorage.setItem('user', JSON.stringify(response?.data.result))
-        //         dispatch(login({
-        //             user_name: response?.data.result,
-        //             full_name: response?.data.result.full_name,
-        //             email: response?.data.result.email,
-        //             password: response?.data.result.password,
-        //             role: response?.data.result.role
-        //         }))
-        //     })
-        //     .catch((error) =>{notify(error?.response?.data.message)})
-        // } catch(error) {
-        //     console.log(error);
-        // }
+        try {
+            await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
+            .then((response) =>{
+                notify(response?.data.message)
+                sessionStorage.setItem('user', JSON.stringify(response?.data?.result?.user_name))
+                dispatch(login({
+                    user_name: response?.data.result?.user_name,
+                    full_name: response?.data.result?.full_name,
+                    email: response?.data.result?.email,
+                    role: response?.data.result.role
+                }))
+                navigate('/')
+            })
+            .catch((error) =>{notify(error?.response?.data.message)})
+        } catch(error) {
+            console.log(error);
+        }
     };
 
     return (

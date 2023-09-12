@@ -36,9 +36,6 @@ const ReadData = () => {
     }
 
     useEffect(()=>{
-        if(user === null) {
-            navigate('/')
-        }
         getAllData();
     },[])
 

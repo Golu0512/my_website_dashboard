@@ -71,12 +71,6 @@ const InsertData = () => {
         });
     };
 
-    useEffect(() =>{
-        if(user === null) {
-            navigate('/')
-        }
-    },[])
-
     return (
         <>
             <Box m="20px" pb="100px">

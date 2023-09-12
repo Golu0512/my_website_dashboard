@@ -91,12 +91,6 @@ const UpdateData = () => {
         // console.log('aaa',sendId.id);
     },[sendId.id])
 
-    useEffect(()=>{
-        if(user === null) {
-            navigate('/')
-        }
-    },[])
-
     return (
         <>
             <Box m="20px" pb="100px">
