@@ -12,6 +12,7 @@ import UpdateData from "./mysite/UpdateData";
 import DeleteData from "./mysite/DeleteData";
 import Login from "./mysite/Login";
 import ErrorPage from "./mysite/ErrorPage";
+import UserRequest from "./mysite/UserRequest";
 import Layout from "./mysite/Layout";
 import PublicLayout from "./mysite/PublicLayout";
 
@@ -38,6 +39,7 @@ function App() {
                 <Route path="/readdata" element={<ReadData />} />
                 <Route path="/updatedata" element={<UpdateData />} />
                 <Route path="/deletedata" element={<DeleteData />} />
+                <Route index path="/userrequest" element={<UserRequest />} />
               </Route>
               <Route path="*" element={<ErrorPage />} />
             </Routes>
