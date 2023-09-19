@@ -39,6 +39,7 @@ const Login = () => {
             await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
             .then((response) =>{
                 notify(response?.data.message)
+                console.log(response.data.message);
                 sessionStorage.setItem('user', JSON.stringify(response?.data?.data))
                 dispatch(login({
                     full_name: response?.data.data?.full_name,

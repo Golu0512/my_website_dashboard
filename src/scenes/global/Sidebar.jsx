@@ -68,8 +68,7 @@ const Sidebar = () => {
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
-        {
-          (user !== null) ?
+        
             <Menu iconShape="square">
               {/* LOGO AND MENU ICON */}
               <MenuItem
@@ -88,7 +87,9 @@ const Sidebar = () => {
                     ml="15px"
                   >
                     <Typography variant="h3" color={colors.grey[100]}>
-                      ADMIN
+                      <div className='d-flex justify-content-center align-items-center'>
+                          <img src='/images/logo.png' alt='LOGO' height='50px' width='50px' />
+                      </div>
                     </Typography>
                     <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                       <MenuOutlinedIcon />
@@ -97,7 +98,7 @@ const Sidebar = () => {
                 )}
               </MenuItem>
 
-              {!isCollapsed && (
+              {(!isCollapsed &&  user !== null) ? 
                 <Box mb="25px">
                   <Box display="flex" justifyContent="center" alignItems="center">
                     <img
@@ -115,83 +116,87 @@ const Sidebar = () => {
                       fontWeight="bold"
                       sx={{ m: "10px 0 0 0" }}
                     >
-                      {user.full_name}
+                      {user?.full_name}
                     </Typography>
                     <Typography variant="h5" color={colors.greenAccent[500]}>
                       Smart Admin
                     </Typography>
                   </Box>
                 </Box>
-              )}
+              : ''
+              }
 
-              <Box paddingLeft={isCollapsed ? undefined : "10%"}>
-                <Item
-                  title="Dashboard"
-                  to="/"
-                  icon={<HomeOutlinedIcon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
+            {
+              (user !== null) ?
 
-                <Typography
-                  variant="h6"
-                  color={colors.grey[300]}
-                  sx={{ m: "15px 0 5px 20px" }}
-                >
-                  Data
-                </Typography>
-                <Item
-                  title="Insert Data"
-                  to="/insertdata"
-                  icon={<PeopleOutlinedIcon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Item
-                  title="Read Data"
-                  to="/readdata"
-                  icon={<ContactsOutlinedIcon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                <Item
-                  title="Update Data"
-                  to="/updatedata"
-                  icon={<ReceiptOutlinedIcon />}
-                  selected={selected}
-                  setSelected={setSelected}
-                />
-                {user.role === '1' ?
-                <Box>
+                <Box paddingLeft={isCollapsed ? undefined : "10%"}>
                   <Item
-                    title="Delete Data"
-                    to="/deletedata"
-                    icon={<ReceiptOutlinedIcon />}
+                    title="Dashboard"
+                    to="/"
+                    icon={<HomeOutlinedIcon />}
                     selected={selected}
                     setSelected={setSelected}
                   />
+
                   <Typography
                     variant="h6"
                     color={colors.grey[300]}
                     sx={{ m: "15px 0 5px 20px" }}
                   >
-                    User
+                    Data
                   </Typography>
+                  <Item
+                    title="Insert Data"
+                    to="/insertdata"
+                    icon={<PeopleOutlinedIcon />}
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                  <Item
+                    title="Read Data"
+                    to="/readdata"
+                    icon={<ContactsOutlinedIcon />}
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                  <Item
+                    title="Update Data"
+                    to="/updatedata"
+                    icon={<ReceiptOutlinedIcon />}
+                    selected={selected}
+                    setSelected={setSelected}
+                  />
+                  {user.role === '1' ?
+                  <Box>
                     <Item
-                      title="User Request"
-                      to="/userrequest"
+                      title="Delete Data"
+                      to="/deletedata"
                       icon={<ReceiptOutlinedIcon />}
                       selected={selected}
                       setSelected={setSelected}
                     />
-                  </Box>
-                  : ''
-                }
-
-              </Box>
+                    <Typography
+                      variant="h6"
+                      color={colors.grey[300]}
+                      sx={{ m: "15px 0 5px 20px" }}
+                    >
+                      User
+                    </Typography>
+                      <Item
+                        title="User Request"
+                        to="/userrequest"
+                        icon={<ReceiptOutlinedIcon />}
+                        selected={selected}
+                        setSelected={setSelected}
+                      />
+                    </Box>
+                    : ''
+                  }
+                </Box>
+              : ''
+              }
             </Menu>
-          : ''
-        }
+          
       </ProSidebar>
     </Box>
   );
