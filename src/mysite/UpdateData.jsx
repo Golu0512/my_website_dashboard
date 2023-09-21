@@ -46,7 +46,7 @@ const UpdateData = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('https://my-website-api.onrender.com/update_old_movie',formData)
+        const res = await axios.post('https://funkyanimehubapi.onrender.com/update_old_movie',formData)
         if (res.data.message) {
             notify(res.data.message);
             setFormData({
@@ -80,7 +80,7 @@ const UpdateData = () => {
 
     const getData = async () => {
         try {
-            const res = await axios.post('https://my-website-api.onrender.com/get_single_data', sendId);
+            const res = await axios.post('https://funkyanimehubapi.onrender.com/get_single_data', sendId);
             setFormData(res.data);
         } catch (error) {
             console.error('Error fetching data:', error);

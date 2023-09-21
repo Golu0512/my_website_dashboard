@@ -17,7 +17,7 @@ const ReadData = () => {
 
     const getAllData = async () => {
         setLoading(true);
-        const res = await axios.get('https://my-website-api.onrender.com/old_movies')
+        const res = await axios.get('https://funkyanimehubapi.onrender.com/old_movies')
         setTableData(res.data.data);
         setTotalRecords(res.data?.data.length);
         setLoading(false);

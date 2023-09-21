@@ -41,7 +41,7 @@ const DeleteData = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await axios.post('https://my-website-api.onrender.com/delete_single_data',sendId)
+        const res = await axios.post('https://funkyanimehubapi.onrender.com/delete_single_data',sendId)
         if (res.data.message) {
             notify(res.data.message);
             setFormData({
@@ -74,7 +74,7 @@ const DeleteData = () => {
     }
 
     const getData = async () => {
-        const res = await axios.post('https://my-website-api.onrender.com/get_single_data',sendId);
+        const res = await axios.post('https://funkyanimehubapi.onrender.com/get_single_data',sendId);
         setFormData(res.data)
     }
 

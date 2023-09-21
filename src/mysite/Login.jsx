@@ -36,7 +36,7 @@ const Login = () => {
     const userLogin = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://my-website-api.onrender.com/admin_login', loginUser)
+            await axios.post('https://funkyanimehubapi.onrender.com/admin_login', loginUser)
             .then((response) =>{
                 notify(response?.data.message)
                 console.log(response.data.message);

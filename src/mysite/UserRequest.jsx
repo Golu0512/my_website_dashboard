@@ -13,7 +13,7 @@ const UserRequest = () => {
 
     const getAllData = async () => {
         setLoading(true);
-        const res = await axios.get('https://my-website-api.onrender.com/show_movie_request')
+        const res = await axios.get('https://funkyanimehubapi.onrender.com/show_movie_request')
         setTableData(res.data.data);
         setTotalRecords(res.data?.data.length);
         setLoading(false);

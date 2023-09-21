@@ -44,7 +44,7 @@ const InsertData = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         
-        const res = await axios.post('https://my-website-api.onrender.com/insert_old_movie', formData);
+        const res = await axios.post('https://funkyanimehubapi.onrender.com/insert_old_movie', formData);
 
         if (res.data.message) {
             notify(res.data.message);
